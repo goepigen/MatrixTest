@@ -49,14 +49,14 @@ computeArrowAnimationData := proc(m::Matrix, color := red)
     windowSize := 1000;
 
     arrowAndTrailDisplay := plots:-display(seq(plots:-display(
-        computeArrowPlotData(m, t, color), 
+        computeArrowPlotData(m, t, color),
         computeTrailPlotData(m, t, windowSize, color)), 
         t=times), insequence=true):
 
     return arrowAndTrailDisplay;
 end:
 
-computeArrowPlotData := proc(m::Matrix, t, arrowColor) return plots:-arrow([[0, 0, 0], m[t]], color = arrowColor); end:
+computeArrowPlotData := proc(m::Matrix, t, arrowColor) return plots:-pointplot3d(m[t], color = arrowColor); end:
 
 computeTrailPlotData := proc(m::Matrix, t, windowSize, trailColor) 
     # for the number of points less than or equal to windowSize, the window size equals the number of points
